@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView ,CreateView
 from .models import Post
@@ -14,7 +14,7 @@ class ArticleDetailView(DetailView):
     model = Post
     template_name = 'article_detail.html'
 
-class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     template_name = 'article_edit.html'
     fields = ['title', 'summary', 'body', 'photo']
@@ -22,7 +22,7 @@ class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         obj = self.get_object()
         return obj.author == self.request.user
     
-class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class ArticleDeleteView(LoginRequiredMixin,  DeleteView):
     model = Post
     template_name = 'article_delete.html'
     success_url = reverse_lazy('articlelist')
@@ -30,7 +30,7 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-class ArticleCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class ArticleCreateView(LoginRequiredMixin,  CreateView):
     model = Post
     fields = ['title', 'summary','body', 'photo', ]
     template_name = 'article_new.html'

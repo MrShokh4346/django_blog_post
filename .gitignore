@@ -1,3 +1,14 @@
 .env
 __pycashe__/
 db.sqlite3
+venv/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
