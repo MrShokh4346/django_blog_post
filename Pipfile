@@ -4,16 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "~=3.1.0"
+django = "~=5.2.0"
 django-crispy-forms = "*"
 pillow = "*"
 django-ckeditor = "*"
-environs = {version = "~=8.0.0", extras = ["django"]}
+django-storages = "*"
+boto3 = "*"
+environs = {extras = ["django"], version = "*"}
 psycopg2-binary = "*"
-whitenoise = "~=5.0.0"
+whitenoise = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.11"

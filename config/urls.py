@@ -1,7 +1,7 @@
 """config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -28,7 +28,7 @@ urlpatterns = [
     path('', include('pages.urls')),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+if settings.DEBUG and not getattr(settings, "USE_S3", False):
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     
